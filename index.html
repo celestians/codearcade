@@ -255,25 +255,25 @@
 <body>
     <div class="container">
         <div class="logo-container">
-            <img id="mainBanner" src="" alt="CodeArcade">
+            <img src="codearcade-banner.png" alt="CodeArcade">
         </div>
 
         <div class="dev-logos">
             <div class="dev-logo-wrapper">
                 <div class="dev-logo">
-                    <img id="celestiLogo" src="" alt="Celesi">
+                    <img src="celesti-logo.png" alt="Celesi">
                 </div>
                 <div class="dev-name">CELESI</div>
             </div>
             <div class="dev-logo-wrapper">
                 <div class="dev-logo">
-                    <img id="jakubixLogo" src="" alt="Jakubix">
+                    <img src="jakubix.jpg" alt="Jakubix">
                 </div>
                 <div class="dev-name">JAKUBIX</div>
             </div>
             <div class="dev-logo-wrapper">
                 <div class="dev-logo">
-                    <img id="profesorLogo" src="" alt="Profesor Fresh">
+                    <img src="profesor-fresh.gif" alt="Profesor Fresh">
                 </div>
                 <div class="dev-name">PROFESOR FRESH</div>
             </div>
@@ -296,39 +296,6 @@
     </div>
 
     <script>
-        async function loadImages() {
-            try {
-                // Wczytaj baner CodeArcade
-                const bannerData = await window.fs.readFile('codearcade-banner.png');
-                const bannerBlob = new Blob([bannerData], { type: 'image/png' });
-                const bannerUrl = URL.createObjectURL(bannerBlob);
-                document.getElementById('mainBanner').src = bannerUrl;
-
-                // Wczytaj logo Celesti
-                const celestiData = await window.fs.readFile('celesti-logo.png');
-                const celestiBlob = new Blob([celestiData], { type: 'image/png' });
-                const celestiUrl = URL.createObjectURL(celestiBlob);
-                document.getElementById('celestiLogo').src = celestiUrl;
-
-                // Wczytaj zdjęcie Jakubix
-                const jakubixData = await window.fs.readFile('jakubix.jpg');
-                const jakubixBlob = new Blob([jakubixData], { type: 'image/jpeg' });
-                const jakubixUrl = URL.createObjectURL(jakubixBlob);
-                document.getElementById('jakubixLogo').src = jakubixUrl;
-
-                // Wczytaj zdjęcie Profesor Fresh
-                const profesorData = await window.fs.readFile('profesor-fresh.gif');
-                const profesorBlob = new Blob([profesorData], { type: 'image/gif' });
-                const profesorUrl = URL.createObjectURL(profesorBlob);
-                document.getElementById('profesorLogo').src = profesorUrl;
-
-            } catch (error) {
-                console.error('Błąd wczytywania obrazów:', error);
-            }
-        }
-
-        loadImages();
-
         function joinDiscord() {
             window.open('https://discord.gg/pcWKU7vxJT', '_blank');
         }
