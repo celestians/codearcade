@@ -292,6 +292,12 @@
     </style>
 </head>
 <body>
+    <!-- Muzyka w tle -->
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="background-music.mp3" type="audio/mpeg">
+        Twoja przeglądarka nie obsługuje odtwarzania audio.
+    </audio>
+
     <div class="container">
         <div class="logo-container">
             <img src="codearcade-banner.png" alt="CodeArcade">
@@ -350,21 +356,36 @@
     </div>
 
     <script>
+        // Próba uruchomienia muzyki (w przypadku blokady autoplay)
+        document.addEventListener('DOMContentLoaded', function() {
+            const music = document.getElementById('backgroundMusic');
+            music.volume = 0.2; // Głośność 20%
+            
+            // Próba autoplay
+            music.play().catch(function(error) {
+                console.log('Autoplay zablokowany, czekam na interakcję użytkownika');
+                // Uruchom muzykę po pierwszym kliknięciu na stronie
+                document.body.addEventListener('click', function() {
+                    music.play();
+                }, { once: true });
+            });
+        });
+
         const devProfiles = {
             celesti: {
-                name: 'CELESTI',
+                name: 'CELESI',
                 img: 'celesti-logo.png',
-                desc: 'Jestem developerem FiveM/Discord. Znam języki: Python, Lua, CSS, HTML i JavaScript. Aktualnie robię serwery do Discorda oraz boty.'
+                desc: 'Jestem Celesti, jestem developerem FiveM/Discord. Znam języki: Python, Lua, CSS, HTML i JavaScript. Aktualnie robię serwery do Discorda oraz boty.'
             },
             jakubix: {
                 name: 'JAKUBIX',
                 img: 'jakubix.jpg',
-                desc: 'Jestem developerem Discord. Piszę skrypty głównie w JavaScript oraz Python'
+                desc: 'Opis Jakubix - dodaj tutaj opis'
             },
             profesor: {
                 name: 'PROFESOR FRESH',
                 img: 'profesor-fresh.gif',
-                desc: 'Jestem developerem Fivem. Pisze skrypty w Lua'
+                desc: 'Opis Profesor Fresh - dodaj tutaj opis'
             }
         };
 
