@@ -299,26 +299,26 @@
         async function loadImages() {
             try {
                 // Wczytaj baner CodeArcade
-                const bannerData = await window.fs.readFile('image_1735686078354_0.30497608091316324.png');
+                const bannerData = await window.fs.readFile('codearcade-banner.png');
                 const bannerBlob = new Blob([bannerData], { type: 'image/png' });
                 const bannerUrl = URL.createObjectURL(bannerBlob);
                 document.getElementById('mainBanner').src = bannerUrl;
 
                 // Wczytaj logo Celesti
-                const celestiData = await window.fs.readFile('image_1735686063926_0.5171933733086027.png');
+                const celestiData = await window.fs.readFile('celesti-logo.png');
                 const celestiBlob = new Blob([celestiData], { type: 'image/png' });
                 const celestiUrl = URL.createObjectURL(celestiBlob);
                 document.getElementById('celestiLogo').src = celestiUrl;
 
                 // Wczytaj zdjęcie Jakubix
-                const jakubixData = await window.fs.readFile('image_1735686233569_0.8577421026906372.png');
-                const jakubixBlob = new Blob([jakubixData], { type: 'image/png' });
+                const jakubixData = await window.fs.readFile('jakubix.jpg');
+                const jakubixBlob = new Blob([jakubixData], { type: 'image/jpeg' });
                 const jakubixUrl = URL.createObjectURL(jakubixBlob);
                 document.getElementById('jakubixLogo').src = jakubixUrl;
 
                 // Wczytaj zdjęcie Profesor Fresh
-                const profesorData = await window.fs.readFile('image_1735686233573_0.40311433529074026.png');
-                const profesorBlob = new Blob([profesorData], { type: 'image/png' });
+                const profesorData = await window.fs.readFile('profesor-fresh.gif');
+                const profesorBlob = new Blob([profesorData], { type: 'image/gif' });
                 const profesorUrl = URL.createObjectURL(profesorBlob);
                 document.getElementById('profesorLogo').src = profesorUrl;
 
