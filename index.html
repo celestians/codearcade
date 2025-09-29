@@ -305,19 +305,19 @@
 
         <div class="dev-logos">
             <div class="dev-logo-wrapper">
-                <div class="dev-logo" onclick="showDevProfile('celesti')">
+                <div class="dev-logo" onclick="openDiscordProfile('1268507585581944884')">
                     <img src="celesti-logo.png" alt="Celesi">
                 </div>
                 <div class="dev-name">CELESI</div>
             </div>
             <div class="dev-logo-wrapper">
-                <div class="dev-logo" onclick="showDevProfile('jakubix')">
+                <div class="dev-logo" onclick="openDiscordProfile('1138954347254911006')">
                     <img src="jakubix.jpg" alt="Jakubix">
                 </div>
                 <div class="dev-name">JAKUBIX</div>
             </div>
             <div class="dev-logo-wrapper">
-                <div class="dev-logo" onclick="showDevProfile('profesor')">
+                <div class="dev-logo" onclick="openDiscordProfile('1087030948824100894')">
                     <img src="profesor-fresh.gif" alt="Profesor Fresh">
                 </div>
                 <div class="dev-name">PROFESOR FRESH</div>
@@ -359,7 +359,7 @@
         // Próba uruchomienia muzyki (w przypadku blokady autoplay)
         document.addEventListener('DOMContentLoaded', function() {
             const music = document.getElementById('backgroundMusic');
-            music.volume = 0.2; // Głośność 20%
+            music.volume = 0.1; // Głośność 10%
             
             // Próba autoplay
             music.play().catch(function(error) {
@@ -388,6 +388,16 @@
                 desc: 'Opis Profesor Fresh - dodaj tutaj opis'
             }
         };
+
+        function openDiscordProfile(userId) {
+            // Próbuje otworzyć w aplikacji Discord
+            window.location.href = `discord://discordapp.com/users/${userId}`;
+            
+            // Fallback - otwiera w przeglądarce po 1 sekundzie jeśli app się nie otworzy
+            setTimeout(() => {
+                window.open(`https://discord.com/users/${userId}`, '_blank');
+            }, 1000);
+        }
 
         function showDevProfile(devName) {
             const dev = devProfiles[devName];
