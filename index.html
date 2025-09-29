@@ -172,9 +172,46 @@
             border: 3px solid #fff;
             padding: 50px;
             text-align: center;
-            max-width: 500px;
+            max-width: 600px;
             width: 90%;
             color: #fff;
+        }
+
+        .dev-profile {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .dev-profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .dev-profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .dev-profile-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .dev-profile-info p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #ccc;
+            text-align: left;
         }
 
         .modal-content h2 {
@@ -262,19 +299,19 @@
 
         <div class="dev-logos">
             <div class="dev-logo-wrapper">
-                <div class="dev-logo" onclick="openDiscordProfile('1268507585581944884')">
+                <div class="dev-logo" onclick="showDevProfile('celesti')">
                     <img src="celesti-logo.png" alt="Celesi">
                 </div>
                 <div class="dev-name">CELESI</div>
             </div>
             <div class="dev-logo-wrapper">
-                <div class="dev-logo" onclick="openDiscordProfile('1138954347254911006')">
+                <div class="dev-logo" onclick="showDevProfile('jakubix')">
                     <img src="jakubix.jpg" alt="Jakubix">
                 </div>
                 <div class="dev-name">JAKUBIX</div>
             </div>
             <div class="dev-logo-wrapper">
-                <div class="dev-logo" onclick="openDiscordProfile('1087030948824100894')">
+                <div class="dev-logo" onclick="showDevProfile('profesor')">
                     <img src="profesor-fresh.gif" alt="Profesor Fresh">
                 </div>
                 <div class="dev-name">PROFESOR FRESH</div>
@@ -297,15 +334,50 @@
         </div>
     </div>
 
+    <div class="modal" id="devProfileModal">
+        <div class="modal-content">
+            <div class="dev-profile">
+                <div class="dev-profile-img">
+                    <img id="profileImg" src="" alt="">
+                </div>
+                <div class="dev-profile-info">
+                    <h3 id="profileName"></h3>
+                    <p id="profileDesc"></p>
+                </div>
+            </div>
+            <button class="close-btn" onclick="closeProfileModal()">Zamknij</button>
+        </div>
+    </div>
+
     <script>
-        function openDiscordProfile(userId) {
-            // Próbuje otworzyć w aplikacji Discord
-            window.location.href = `discord://discordapp.com/users/${userId}`;
-            
-            // Fallback - otwiera w przeglądarce po 1 sekundzie jeśli app się nie otworzy
-            setTimeout(() => {
-                window.open(`https://discord.com/users/${userId}`, '_blank');
-            }, 1000);
+        const devProfiles = {
+            celesti: {
+                name: 'CELESTI',
+                img: 'celesti-logo.png',
+                desc: 'Jestem developerem FiveM/Discord. Znam języki: Python, Lua, CSS, HTML i JavaScript. Aktualnie robię serwery do Discorda oraz boty.'
+            },
+            jakubix: {
+                name: 'JAKUBIX',
+                img: 'jakubix.jpg',
+                desc: 'Jestem developerem Discord. Piszę skrypty głównie w JavaScript oraz Python'
+            },
+            profesor: {
+                name: 'PROFESOR FRESH',
+                img: 'profesor-fresh.gif',
+                desc: 'Jestem developerem Fivem. Pisze skrypty w Lua'
+            }
+        };
+
+        function showDevProfile(devName) {
+            const dev = devProfiles[devName];
+            document.getElementById('profileImg').src = dev.img;
+            document.getElementById('profileName').textContent = dev.name;
+            document.getElementById('profileDesc').textContent = dev.desc;
+            document.getElementById('devProfileModal').classList.add('active');
+        }
+
+        function closeProfileModal() {
+            document.getElementById('devProfileModal').classList.remove('active');
         }
 
         function joinDiscord() {
@@ -323,6 +395,12 @@
         document.getElementById('devTeamModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeModal();
+            }
+        });
+
+        document.getElementById('devProfileModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeProfileModal();
             }
         });
     </script>
