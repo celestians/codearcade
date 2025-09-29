@@ -13,29 +13,92 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #000;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
         }
 
         .container {
             text-align: center;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0;
+            max-width: 700px;
             width: 90%;
+            position: relative;
+            z-index: 1;
         }
 
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
+        .logo-container {
+            margin-bottom: 40px;
+        }
+
+        .logo-container img {
+            max-width: 500px;
+            width: 90%;
+            height: auto;
+        }
+
+        .dev-logos {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .dev-logo-wrapper {
+            text-align: center;
+        }
+
+        .dev-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #fff;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: #000;
+        }
+
+        .dev-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .dev-logo:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .dev-name {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
 
         .buttons {
@@ -48,24 +111,41 @@
         button {
             padding: 18px 40px;
             font-size: 1.1rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 12px;
+            font-weight: 700;
+            border: 3px solid #fff;
+            border-radius: 0;
             cursor: pointer;
             transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.9);
-            color: #667eea;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            background: transparent;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        button:hover::before {
+            left: 0;
         }
 
         button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-            background: #fff;
+            color: #000;
         }
 
         button:active {
-            transform: translateY(-1px);
+            transform: scale(0.98);
         }
 
         .modal {
@@ -75,7 +155,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.95);
             justify-content: center;
             align-items: center;
             z-index: 1000;
@@ -86,70 +166,128 @@
         }
 
         .modal-content {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
+            background: #000;
+            border: 3px solid #fff;
+            padding: 50px;
             text-align: center;
-            max-width: 400px;
+            max-width: 500px;
             width: 90%;
-            color: #333;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            color: #fff;
         }
 
         .modal-content h2 {
-            margin-bottom: 25px;
-            color: #667eea;
-            font-size: 1.8rem;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            border-bottom: 2px solid #fff;
+            padding-bottom: 20px;
         }
 
         .modal-content p {
-            margin: 12px 0;
-            font-size: 1.2rem;
-            color: #555;
+            margin: 20px 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
 
         .close-btn {
-            margin-top: 30px;
-            padding: 12px 30px;
-            background: #667eea;
-            color: white;
-            border: none;
-            border-radius: 8px;
+            margin-top: 40px;
+            padding: 15px 40px;
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
             cursor: pointer;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             transition: all 0.3s ease;
         }
 
         .close-btn:hover {
-            background: #5568d3;
-            transform: scale(1.05);
+            background: #fff;
+            color: #000;
+        }
+
+        .loading {
+            color: #fff;
+            font-size: 1.2rem;
         }
 
         @media (max-width: 600px) {
-            h1 {
-                font-size: 2rem;
+            .container {
+                padding: 40px 20px;
+            }
+
+            .logo-container img {
+                width: 95%;
+            }
+
+            .dev-logos {
+                gap: 20px;
+            }
+
+            .dev-logo {
+                width: 80px;
+                height: 80px;
+            }
+
+            .dev-name {
+                font-size: 0.8rem;
             }
             
             button {
-                font-size: 1rem;
+                font-size: 0.9rem;
                 padding: 15px 30px;
+            }
+
+            .modal-content {
+                padding: 30px;
+            }
+
+            .modal-content h2 {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>CodeArcade</h1>
+        <div class="logo-container">
+            <img id="mainBanner" src="" alt="CodeArcade">
+        </div>
+
+        <div class="dev-logos">
+            <div class="dev-logo-wrapper">
+                <div class="dev-logo">
+                    <img id="celestiLogo" src="" alt="Celesi">
+                </div>
+                <div class="dev-name">CELESI</div>
+            </div>
+            <div class="dev-logo-wrapper">
+                <div class="dev-logo">
+                    <img id="jakubixLogo" src="" alt="Jakubix">
+                </div>
+                <div class="dev-name">JAKUBIX</div>
+            </div>
+            <div class="dev-logo-wrapper">
+                <div class="dev-logo">
+                    <img id="profesorLogo" src="" alt="Profesor Fresh">
+                </div>
+                <div class="dev-name">PROFESOR FRESH</div>
+            </div>
+        </div>
+
         <div class="buttons">
-            <button onclick="joinDiscord()">Dołącz do naszego Discorda</button>
-            <button onclick="showDevTeam()">Nasz Dev Team</button>
+            <button onclick="joinDiscord()">Dołącz do Discorda</button>
+            <button onclick="showDevTeam()">Dev Team</button>
         </div>
     </div>
 
     <div class="modal" id="devTeamModal">
         <div class="modal-content">
-            <h2>Nasz Dev Team</h2>
+            <h2>Dev Team</h2>
             <p>Celesi</p>
             <p>Jakubix</p>
             <p>Profesor Fresh</p>
@@ -158,6 +296,39 @@
     </div>
 
     <script>
+        async function loadImages() {
+            try {
+                // Wczytaj baner CodeArcade
+                const bannerData = await window.fs.readFile('image_1735686078354_0.30497608091316324.png');
+                const bannerBlob = new Blob([bannerData], { type: 'image/png' });
+                const bannerUrl = URL.createObjectURL(bannerBlob);
+                document.getElementById('mainBanner').src = bannerUrl;
+
+                // Wczytaj logo Celesti
+                const celestiData = await window.fs.readFile('image_1735686063926_0.5171933733086027.png');
+                const celestiBlob = new Blob([celestiData], { type: 'image/png' });
+                const celestiUrl = URL.createObjectURL(celestiBlob);
+                document.getElementById('celestiLogo').src = celestiUrl;
+
+                // Wczytaj zdjęcie Jakubix
+                const jakubixData = await window.fs.readFile('image_1735686233569_0.8577421026906372.png');
+                const jakubixBlob = new Blob([jakubixData], { type: 'image/png' });
+                const jakubixUrl = URL.createObjectURL(jakubixBlob);
+                document.getElementById('jakubixLogo').src = jakubixUrl;
+
+                // Wczytaj zdjęcie Profesor Fresh
+                const profesorData = await window.fs.readFile('image_1735686233573_0.40311433529074026.png');
+                const profesorBlob = new Blob([profesorData], { type: 'image/png' });
+                const profesorUrl = URL.createObjectURL(profesorBlob);
+                document.getElementById('profesorLogo').src = profesorUrl;
+
+            } catch (error) {
+                console.error('Błąd wczytywania obrazów:', error);
+            }
+        }
+
+        loadImages();
+
         function joinDiscord() {
             window.open('https://discord.gg/pcWKU7vxJT', '_blank');
         }
