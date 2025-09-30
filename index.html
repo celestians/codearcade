@@ -25,7 +25,6 @@
             padding: 40px 20px;
         }
 
-        /* Animowane gwiazdy w tle */
         .stars {
             position: fixed;
             top: 0;
@@ -48,7 +47,6 @@
             50% { opacity: 1; transform: scale(1.2); }
         }
 
-        /* Spadające gwiazdy */
         .shooting-star {
             position: absolute;
             width: 2px;
@@ -220,43 +218,8 @@
             max-width: 600px;
             width: 90%;
             color: #fff;
-        }
-
-        .dev-profile {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 30px;
-            text-align: left;
-        }
-
-        .dev-profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid #fff;
-            flex-shrink: 0;
-            overflow: hidden;
-        }
-
-        .dev-profile-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .dev-profile-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .dev-profile-info p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #ccc;
-            text-align: left;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .modal-content h2 {
@@ -292,11 +255,6 @@
         .close-btn:hover {
             background: #fff;
             color: #000;
-        }
-
-        .loading {
-            color: #fff;
-            font-size: 1.2rem;
         }
 
         @media (max-width: 600px) {
@@ -337,7 +295,6 @@
     </style>
 </head>
 <body>
-    <!-- Animowane gwiazdy -->
     <div class="stars" id="stars"></div>
 
     <div class="container">
@@ -347,19 +304,19 @@
 
         <div class="dev-logos">
             <div class="dev-logo-wrapper">
-                <div class="dev-logo" onclick="openDiscordProfile('1268507585581944884')">
+                <div class="dev-logo" onclick="openDiscord('1268507585581944884')">
                     <img src="celesti.png" alt="Celesi">
                 </div>
                 <div class="dev-name">CELESI</div>
             </div>
             <div class="dev-logo-wrapper">
-                <div class="dev-logo" onclick="openDiscordProfile('1138954347254911006')">
+                <div class="dev-logo" onclick="openDiscord('1138954347254911006')">
                     <img src="jakubix.png" alt="Jakubix">
                 </div>
                 <div class="dev-name">JAKUBIX</div>
             </div>
             <div class="dev-logo-wrapper">
-                <div class="dev-logo" onclick="openDiscordProfile('1087030948824100894')">
+                <div class="dev-logo" onclick="openDiscord('1087030948824100894')">
                     <img src="fresh.png" alt="Fresh">
                 </div>
                 <div class="dev-name">FRESH</div>
@@ -370,7 +327,7 @@
             <div class="owner-title">Właściciel</div>
             <div style="display: flex; justify-content: center;">
                 <div class="dev-logo-wrapper">
-                    <div class="dev-logo" onclick="openDiscordProfile('1183178428225179688')">
+                    <div class="dev-logo" onclick="openDiscord('1183178428225179688')">
                         <img src="zlavii.png" alt="Zlavii">
                     </div>
                     <div class="dev-name">ZLAVII</div>
@@ -380,18 +337,18 @@
 
         <div class="buttons">
             <button onclick="joinDiscord()">Dołącz do Discorda</button>
-            <button onclick="showOffer()">Nasza Oferta</button>
-            <button onclick="showDevTeam()">Dev Team</button>
+            <button onclick="openOffer()">Nasza Oferta</button>
+            <button onclick="openTeam()">Dev Team</button>
         </div>
     </div>
 
-    <div class="modal" id="devTeamModal">
+    <div class="modal" id="teamModal">
         <div class="modal-content">
             <h2>Dev Team</h2>
             <p>Celesi</p>
             <p>Jakubix</p>
             <p>Fresh</p>
-            <button class="close-btn" onclick="closeModal()">Zamknij</button>
+            <button class="close-btn" onclick="closeTeam()">Zamknij</button>
         </div>
     </div>
 
@@ -403,54 +360,36 @@
                 
                 <div style="margin: 25px 0;">
                     <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">🎮 Profesjonalne serwery Discord</h4>
-                    <p style="color: #ccc; line-height: 1.6;">Eleganckie, dopracowane i dostosowane pod Twoje potrzeby.</p>
+                    <p style="color: #ccc; line-height: 1.6; font-size: 1rem;">Eleganckie, dopracowane i dostosowane pod Twoje potrzeby.</p>
                 </div>
 
                 <div style="margin: 25px 0;">
                     <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">🤖 Autorskie boty na Discord</h4>
-                    <p style="color: #ccc; line-height: 1.6;">Unikalne funkcje, pełna personalizacja i nowoczesne rozwiązania.</p>
+                    <p style="color: #ccc; line-height: 1.6; font-size: 1rem;">Unikalne funkcje, pełna personalizacja i nowoczesne rozwiązania.</p>
                 </div>
 
                 <div style="margin: 25px 0;">
                     <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">🚗 Skrypty FiveM</h4>
-                    <p style="color: #ccc; line-height: 1.6;">Lekkie, dopracowane i gotowe, aby wznieść Twój serwer RP na wyższy poziom.</p>
+                    <p style="color: #ccc; line-height: 1.6; font-size: 1rem;">Lekkie, dopracowane i gotowe, aby wznieść Twój serwer RP na wyższy poziom.</p>
                 </div>
 
                 <div style="margin: 30px 0; padding-top: 20px; border-top: 2px solid rgba(255,255,255,0.2);">
                     <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 15px;">💎 Dlaczego CodeArcade?</h4>
-                    <p style="color: #ccc; margin: 8px 0;">→ Indywidualne podejście</p>
-                    <p style="color: #ccc; margin: 8px 0;">→ Szybka realizacja</p>
-                    <p style="color: #ccc; margin: 8px 0;">→ Gwarancja jakości</p>
+                    <p style="color: #ccc; margin: 8px 0; font-size: 1rem;">→ Indywidualne podejście</p>
+                    <p style="color: #ccc; margin: 8px 0; font-size: 1rem;">→ Szybka realizacja</p>
+                    <p style="color: #ccc; margin: 8px 0; font-size: 1rem;">→ Gwarancja jakości</p>
                 </div>
 
                 <p style="color: #fff; text-align: center; margin-top: 30px; font-size: 1.1rem;">📩 Napisz do nas już dziś i stwórzmy razem coś wyjątkowego!</p>
             </div>
-            <button class="close-btn" onclick="closeOfferModal()">Zamknij</button>
-        </div>
-    </div>
-
-    <div class="modal" id="devProfileModal">
-        <div class="modal-content">
-            <div class="dev-profile">
-                <div class="dev-profile-img">
-                    <img id="profileImg" src="" alt="">
-                </div>
-                <div class="dev-profile-info">
-                    <h3 id="profileName"></h3>
-                    <p id="profileDesc"></p>
-                </div>
-            </div>
-            <button class="close-btn" onclick="closeProfileModal()">Zamknij</button>
+            <button class="close-btn" onclick="closeOffer()">Zamknij</button>
         </div>
     </div>
 
     <script>
-        // Generowanie gwiazd
         function createStars() {
-            const starsContainer = document.getElementById('stars');
-            const numberOfStars = 150;
-
-            for (let i = 0; i < numberOfStars; i++) {
+            const stars = document.getElementById('stars');
+            for (let i = 0; i < 150; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 star.style.width = Math.random() * 3 + 'px';
@@ -459,88 +398,55 @@
                 star.style.top = Math.random() * 100 + '%';
                 star.style.animationDelay = Math.random() * 3 + 's';
                 star.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                starsContainer.appendChild(star);
+                stars.appendChild(star);
             }
 
-            // Spadające gwiazdy
             setInterval(() => {
-                const shootingStar = document.createElement('div');
-                shootingStar.className = 'shooting-star';
-                shootingStar.style.left = Math.random() * 100 + '%';
-                shootingStar.style.top = Math.random() * 50 + '%';
-                shootingStar.style.animationDuration = (Math.random() * 2 + 2) + 's';
-                starsContainer.appendChild(shootingStar);
-
-                setTimeout(() => {
-                    shootingStar.remove();
-                }, 3000);
+                const shooting = document.createElement('div');
+                shooting.className = 'shooting-star';
+                shooting.style.left = Math.random() * 100 + '%';
+                shooting.style.top = Math.random() * 50 + '%';
+                shooting.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                stars.appendChild(shooting);
+                setTimeout(() => shooting.remove(), 3000);
             }, 3000);
         }
 
         createStars();
 
-        const devProfiles = {
-            celesti: {
-                name: 'CELESI',
-                img: 'celesti.png',
-                desc: 'Jestem Celesti, jestem developerem FiveM/Discord. Znam języki: Python, Lua, CSS, HTML i JavaScript. Aktualnie robię serwery do Discorda oraz boty.'
-            },
-            jakubix: {
-                name: 'JAKUBIX',
-                img: 'jakubix.png',
-                desc: 'Opis Jakubix - dodaj tutaj opis'
-            },
-            profesor: {
-                name: 'FRESH',
-                img: 'fresh.png',
-                desc: 'Opis Fresh - dodaj tutaj opis'
-            }
-        };
-
-        function openDiscordProfile(userId) {
-            // Próbuje otworzyć w aplikacji Discord
-            window.location.href = `discord://discordapp.com/users/${userId}`;
-            
-            // Fallback - otwiera w przeglądarce po 1 sekundzie jeśli app się nie otworzy
-            setTimeout(() => {
-                window.open(`https://discord.com/users/${userId}`, '_blank');
-            }, 1000);
-        }
-
-        function showDevProfile(devName) {
-            const dev = devProfiles[devName];
-            document.getElementById('profileImg').src = dev.img;
-            document.getElementById('profileName').textContent = dev.name;
-            document.getElementById('profileDesc').textContent = dev.desc;
-            document.getElementById('devProfileModal').classList.add('active');
-        }
-
-        function closeProfileModal() {
-            document.getElementById('devProfileModal').classList.remove('active');
-        }
-
         function joinDiscord() {
             window.open('https://discord.gg/pcWKU7vxJT', '_blank');
         }
 
-        function showDevTeam() {
-            document.getElementById('devTeamModal').classList.add('active');
+        function openDiscord(id) {
+            window.location.href = 'discord://discordapp.com/users/' + id;
+            setTimeout(() => {
+                window.open('https://discord.com/users/' + id, '_blank');
+            }, 1000);
         }
 
-        function closeModal() {
-            document.getElementById('devTeamModal').classList.remove('active');
+        function openOffer() {
+            document.getElementById('offerModal').classList.add('active');
         }
 
-        document.getElementById('devTeamModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
+        function closeOffer() {
+            document.getElementById('offerModal').classList.remove('active');
+        }
+
+        function openTeam() {
+            document.getElementById('teamModal').classList.add('active');
+        }
+
+        function closeTeam() {
+            document.getElementById('teamModal').classList.remove('active');
+        }
+
+        document.getElementById('offerModal').addEventListener('click', function(e) {
+            if (e.target === this) closeOffer();
         });
 
-        document.getElementById('devProfileModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeProfileModal();
-            }
+        document.getElementById('teamModal').addEventListener('click', function(e) {
+            if (e.target === this) closeTeam();
         });
     </script>
 </body>
