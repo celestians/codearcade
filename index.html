@@ -25,18 +25,49 @@
             padding: 40px 20px;
         }
 
-        body::before {
-            content: '';
-            position: absolute;
+        /* Animowane gwiazdy w tle */
+        .stars {
+            position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
-                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Spadające gwiazdy */
+        .shooting-star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+            animation: shoot 3s linear infinite;
+        }
+
+        @keyframes shoot {
+            0% {
+                transform: translateX(0) translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-300px) translateY(300px);
+                opacity: 0;
+            }
         }
 
         .container {
@@ -306,6 +337,9 @@
     </style>
 </head>
 <body>
+    <!-- Animowane gwiazdy -->
+    <div class="stars" id="stars"></div>
+
     <div class="container">
         <div class="logo-container">
             <img src="codearcade-banner.png" alt="CodeArcade">
@@ -376,6 +410,40 @@
     </div>
 
     <script>
+        // Generowanie gwiazd
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const numberOfStars = 150;
+
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                starsContainer.appendChild(star);
+            }
+
+            // Spadające gwiazdy
+            setInterval(() => {
+                const shootingStar = document.createElement('div');
+                shootingStar.className = 'shooting-star';
+                shootingStar.style.left = Math.random() * 100 + '%';
+                shootingStar.style.top = Math.random() * 50 + '%';
+                shootingStar.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                starsContainer.appendChild(shootingStar);
+
+                setTimeout(() => {
+                    shootingStar.remove();
+                }, 3000);
+            }, 3000);
+        }
+
+        createStars();
+
         const devProfiles = {
             celesti: {
                 name: 'CELESI',
