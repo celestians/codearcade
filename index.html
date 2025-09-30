@@ -70,6 +70,20 @@
             align-items: center;
         }
 
+        .owner-section {
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .owner-title {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
         .dev-logo-wrapper {
             text-align: center;
         }
@@ -292,12 +306,6 @@
     </style>
 </head>
 <body>
-    <!-- Muzyka w tle -->
-    <audio id="backgroundMusic" autoplay loop>
-        <source src="background-music.mp3" type="audio/mpeg">
-        Twoja przeglądarka nie obsługuje odtwarzania audio.
-    </audio>
-
     <div class="container">
         <div class="logo-container">
             <img src="codearcade-banner.png" alt="CodeArcade">
@@ -321,6 +329,18 @@
                     <img src="profesor-fresh.gif" alt="Profesor Fresh">
                 </div>
                 <div class="dev-name">PROFESOR FRESH</div>
+            </div>
+        </div>
+
+        <div class="owner-section">
+            <div class="owner-title">Właściciel</div>
+            <div style="display: flex; justify-content: center;">
+                <div class="dev-logo-wrapper">
+                    <div class="dev-logo" onclick="openDiscordProfile('1183178428225179688')">
+                        <img src="zlavia.jpg" alt="Zlavia">
+                    </div>
+                    <div class="dev-name">ZLAVIA</div>
+                </div>
             </div>
         </div>
 
@@ -356,21 +376,6 @@
     </div>
 
     <script>
-        // Próba uruchomienia muzyki (w przypadku blokady autoplay)
-        document.addEventListener('DOMContentLoaded', function() {
-            const music = document.getElementById('backgroundMusic');
-            music.volume = 0.1; // Głośność 10%
-            
-            // Próba autoplay
-            music.play().catch(function(error) {
-                console.log('Autoplay zablokowany, czekam na interakcję użytkownika');
-                // Uruchom muzykę po pierwszym kliknięciu na stronie
-                document.body.addEventListener('click', function() {
-                    music.play();
-                }, { once: true });
-            });
-        });
-
         const devProfiles = {
             celesti: {
                 name: 'CELESI',
